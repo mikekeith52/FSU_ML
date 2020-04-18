@@ -87,7 +87,7 @@ No parameters are tuned for the Logistic Model using this method. For the Random
 ### Tuning optimal cutoff values
 The students now know the concept of parameter tuning, but they should have the opportunity to see what is going on under the hood. That's why choose one more hypterparamter to tune on each model--the cutoff value. At what point should we round our probability predictions up to 1? The default is 0.5, but we can make that value whatever we want.  
 
-To avoid overfitting, we want to tune on an out-of-sample dataset, but we don't want to do this on our test set. Therefore, we can resplit our test data into a tuning and testing set:
+To avoid overfitting, we want to tune on an out-of-sample dataset, but we don't want to do this on our test set because that is like cheating. Therefore, we can resplit our test data into a tuning and testing set:
 
 ``` R
 # split the test set into a tune and test set
@@ -96,7 +96,7 @@ tuning <- testing[tuning_index == T, ]
 testing2 <- testing[tuning_index == F, ]
 ```
 
-I created this function in R to tune this hypeprameter:
+I created this function in R to tune the cutoff hypeprameter:
 
 ``` R
 # Create accuracy graph - whichever there is more of (0s or 1s) is the 'positive' class
