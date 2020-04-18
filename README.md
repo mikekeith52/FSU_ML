@@ -186,7 +186,7 @@ cutoffs_eval <- function(model, tuning_set, pred_col, iters = 1000, plot = T) {
 
 This function takes 1000 cutoff values between 0 and 1 and predicts on the tuning set on each cutoff value. The final result should leave us with 1 optimal cutoff value. This can be visualized:  
 
-![](https://github.com/mikekeith52/FSU_ML/blob/master/rf_variable_importances.png)
+![](https://github.com/mikekeith52/FSU_ML/blob/master/cutoff_differnces_effect_on_accuracy.png)
 
 This is doubly good because it can give insight into the underlying function shapes. The Logistic model displays an S shape for both sensitivity and specificity -- indicative of how the functional exponential form of a logit model is bounded between 0 and 1. The Random Forest is strictly concave -- this is probably due to the decreasing marginal returns of bagging more and more trees. Although our first intuition is to choose the cutoff values where all three lines, sensitivity, specificity, and accuracy, overlap, this actually does not ensure optimal predictive power. The optimal cutoff value is at the absolute maximum of the accuracy curve.  
 
