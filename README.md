@@ -224,7 +224,7 @@ AIC: 1462.3
 Number of Fisher Scoring iterations: 4
 ```
 
-All of our predictors are significant at the 95% confidence level and the signs of the coefficients are intuitive--more hand guns issues in a month means greater likelihood of more gun violence, more restrictive gun laws means less chance, etc. You can go down the list and interpret each one.  
+All of our predictors are significant at the 95% confidence level and the signs of the coefficients are intuitive--more hand guns issued in a month means greater likelihood of more gun violence, more restrictive gun laws means a smaller chance, etc. You can go down the list and interpret each one.  
 
 In the Random Forest, you can't derive such a simple directional analysis, but you can see which variables were the most important in making predictions. In this case, these were the following:
 
