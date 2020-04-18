@@ -233,4 +233,4 @@ In the Random Forest, you can't derive such a simple directional analysis, but y
 ![](https://github.com/mikekeith52/FSU_ML/blob/master/rf_variable_importances.png)
 
 ## Contact
-Michael Keith: (<a href="mailto:mikekeith52@gmail.com">email</a>
+Michael Keith: <a href="mailto:mikekeith52@gmail.com">email</a>
