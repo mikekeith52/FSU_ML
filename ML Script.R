@@ -54,7 +54,7 @@ summary(random_forest)
 # Evaluating - logistic
 
 # Create accuracy graph - whichever there is more of (0s or 1s) is the 'positive' class
-# in this case, the positive class is 0
+# in this case, the positive class is 0 since there are more 0s than 1s
 cutoffs_eval <- function(model, tuning_set, pred_col, iters = 1000, plot = T) {
   message('function evaluates cutoff metrics for two-class estimators')
   message('0/1 only accepted predicted values')
