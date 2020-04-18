@@ -3,7 +3,7 @@
 This repository includes the lesson on Machine Learning I give annually to the Master's of Applied Economics students at Florida State.
 
 ## Overview
-I am asked annually to teach a single introduction to Machine Learning lecture to the new cohort at Florida State. The students have backgrounds typically in STATA, SAS, R, Logistic Modeling, and economic interpretations of societal trends. Building upon that knowledge, this lecture hopes to offer a view to the students to understand how big data and predictive modeling can be used to expand their skillsets.  
+I am asked annually to teach a single introduction to Machine Learning lecture to the new cohort at Florida State. The students have backgrounds typically in STATA, SAS, R, Logistic Modeling, and economic interpretations of societal trends. Building upon that knowledge, this lecture hopes to offer how big data and predictive modeling can be used to expand their skillsets.  
 
 This is completed in R, with an identical application of the techniques and models in Microsoft Azure Machine Learning Studio (not attached here). If the files in this directory are copied locally, the ML Script.R program should run and give identical results to what is described in this document.  
 
