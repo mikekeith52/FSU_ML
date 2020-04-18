@@ -14,7 +14,7 @@ For the sake of the class, I decided to keep only a few variables from the maste
 - many_shooting_events: 1 if the state had many shooting events in the given year/month (I chose an arbitrary cutoff around the 25 percentile of shootings for all states in all months), 0 otherwise. **Dependent Variable**
 - state_race_white: the percentage of the white population in the state. I used my own estimates so that this would change month-to-month, year-to-yer, from the 2010 census estimates
 - UR: the [unemployment rate](https://fred.stlouisfed.org/series/CAUR) in the given state in the given month
-- CI: the [coincidental economic indicator](https://fred.stlouisfed.org/series/CAPHCI) in the given state in the given month -- this was as the distance, in standard deviations, away from the mean of a logged first difference per state--to ensure stationarity and reduce auto-correlation in the panel dataset--this made the values very small
+- CI: the [coincidental economic indicator](https://fred.stlouisfed.org/series/CAPHCI) in the given state in the given month--transformed to be the distance, in standard deviations, away from the mean of a logged first difference per state, to ensure stationarity and reduce auto-correlation in the panel dataset. This made the values very small
 - restr_laws: the number of restrictive gun laws in the given state in the given month
 - hg_per_cap: the number of handgun permits issued in the state per capita
 - summer_months: whether the given month is a summer month (June, July, August)  
