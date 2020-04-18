@@ -179,7 +179,7 @@ optimal_rf_cutoff <- min(rf_accuracy$cutoff[rf_accuracy$accuracy ==
 # Print optimal cutoff for fr
 optimal_rf_cutoff
 
-# Check accuracy metrics - should be a little better than using 0.5
+# Evaluating - logit
 p1 <- predict(logistic_model, testing2, type = "prob")
 p_class1 <- as.factor(ifelse(p1[[2]] >= optimal_logistic_cutoff, 1, 0))
 logistic_cm_opt <- confusionMatrix(p_class1, testing2$many_shooting_events)
