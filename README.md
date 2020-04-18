@@ -3,9 +3,9 @@
 This repository includes the lesson on Machine Learning I give annually to the Master's of Applied Economics students at Florida State.
 
 ## Overview
-I am asked annually to teach a single introduction to Machine Learning lecture to the new cohort at Florida State. The students have backgrounds typically in STATA, SAS, and R; Logistic Modeling; and economic interpretations of societal trends. Building upon that knowledge, this lecture hopes to offer a view to the students to understand how big data can be used to expand their skillsets.  
+I am asked annually to teach a single introduction to Machine Learning lecture to the new cohort at Florida State. The students have backgrounds typically in STATA, SAS, and R; Logistic Modeling; and economic interpretations of societal trends. Building upon that knowledge, this lecture hopes to offer a view to the students to understand how big data and predictive modeling can be used to expand their skillsets.  
 
-This is completed in R, with an identical application of the techniques and models in Microsoft Azure Machine Learning Studio. If the files in this directory are copied locally, the ML Script.R program should run and give identical results to what is described in this document.  
+This is completed in R, with an identical application of the techniques and models in Microsoft Azure Machine Learning Studio (not attached here). If the files in this directory are copied locally, the ML Script.R program should run and give identical results to what is described in this document.  
 
 ## Data
 The data (master_panel_set_clean.csv) is a monthly aggregated state-by-state flat view of many indicators, including how many shooting events occurred in that month (from a dataset obtained on Kaggle--not a complete measure of all shooting events, but close enough to be modeled), how many gun licenses were issued for which types of firearms (according to the NICS database maintained by the FBI), how many permits for hunting and recreational shooting were outstanding in the state in a given month, a coincidental economic indicator available on the [St. Louis Federal Reserve website (FRED)](), the unemployment rate (also from FRED), and more. If you want a complete data dictionary or to know how these measures were obtained and applied to the master dataset, please contact me and I'd be happy to provide that information.  
@@ -186,7 +186,7 @@ cutoffs_eval <- function(model, tuning_set, pred_col, iters = 1000, plot = T) {
 
 This function takes 1000 cutoff values between 0 and 1 and predicts on the tuning set on each cutoff value. The final result should leave us with 1 optimal cutoff value. This can be visualized:  
 
-![]()
+![](https://github.com/mikekeith52/FSU_ML/blob/master/rf_variable_importances.png)
 
 This is doubly good because it can give insight into the underlying function shapes. The Logistic model displays an S shape for both sensitivity and specificity -- indicative of how the functional exponential form of a logit model is bounded between 0 and 1. The Random Forest is strictly concave -- this is probably due to the decreasing marginal returns of bagging more and more trees. Although our first intuition is to choose the cutoff values where all three lines, sensitivity, specificity, and accuracy, overlap, this actually does not ensure optimal predictive power. The optimal cutoff value is at the absolute maximum of the accuracy curve.  
 
@@ -228,4 +228,4 @@ All of our predictors are significant at the 95% confidence level and the signs 
 
 In the Random Forest, you can't derive such a simple directional analysis, but you can see which variables were the most important in making predictions. In this case, these were the following:
 
-![]()
+![](https://github.com/mikekeith52/FSU_ML/blob/master/rf_variable_importances.png)
