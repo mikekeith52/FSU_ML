@@ -12,12 +12,12 @@ The data (master_panel_set_clean.csv) is a monthly aggregated state-by-state fla
 
 For the sake of the class, I decided to keep only a few variables from the master dataset. These include:
 - many_shooting_events: 1 if the state had many shooting events in the given year/month (I chose an arbitrary cutoff around the 25 percentile of shootings for all states in all months), 0 otherwise. **Dependent Variable**
-- state_race_white: the percentage of the white population in the state. I used my own estimates so that this would change month-to-month, year-to-yer, from the 2010 census estimates
+- state_race_white: the percentage of the white population in the state. I used my own estimates so that this would change month-to-month, using the 2000-2010 census estimates as a baseline
 - UR: the [unemployment rate](https://fred.stlouisfed.org/series/CAUR) in the given state in the given month
 - CI: the [coincidental economic indicator](https://fred.stlouisfed.org/series/CAPHCI) in the given state in the given month--transformed to be the distance, in standard deviations, away from the mean of a logged first difference per state, to ensure stationarity and reduce auto-correlation in the panel dataset. This made the values very small
 - restr_laws: the number of restrictive gun laws in the given state in the given month
 - hg_per_cap: the number of handgun permits issued in the state per capita
-- summer_months: whether the given month is a summer month (June, July, August)  
+- summer_months: whether the given month is June, July, or August  
 
 |many_shooting_events|state_race_white|UR|CI|restr_laws|hg_per_cap|summer_months|
 |---|---|---|---|---|---|---|
@@ -29,7 +29,7 @@ For the sake of the class, I decided to keep only a few variables from the maste
 
 This leaves 2,400 observations and 6 predictor variables to predict if many_shooting_events is 1 or 0 for a given obs.  
 
-One of the students in the class, the first time I taught this, made the comment that there was probably some correlation between the statewide indicators applied to the dataset and the number of shootings in that state at a given time. Yes, this is probably true. This lesson isn't supposed to be the final word on how the indicators in this dataset affect gun violence, although the results are interesting. It is meant to be an introduction to Machine Learning techniques. That being said, the predictive power of the models created in the attached R script are siginificantly better than guessing, so there are some insights to be gleaned.  
+One of the students in the class, the first time I taught this, made the comment that there was probably some auto-correlation between the statewide indicators applied to the dataset and the number of shootings in that state at a given time. Yes, this is probably true. This lesson isn't supposed to be the final word on how the indicators in this dataset affect gun violence. It is meant to be an introduction to Machine Learning techniques. That being said, the predictive power of the models created in the attached R script are siginificantly better than guessing, so there are some insights to be gleaned.  
 
 ## Process
 
@@ -82,12 +82,14 @@ random_forest <- train(many_shooting_events ~ ., data = training,
 summary(random_forest)
 ```
 
-No parameters are tuned for the Logistic Model using this method. For the Random Forest, the mtry is trained and optimal mtry is found to be 4. This means four predictors will be used in each bagged tree.  
+Cross-validation is when the dataset is divided into equal and random subsets, the model is trained all subsets of the data minus 1, and then this is repeated across all subsets of the data. The final accuracy metrics are an average of all trials. Different hyperparameters can be tuned in each round of training, so this process can take a long time. The model is chosen that includes the best hyperparemeters, which was the one that performed the best on average.  
+
+No parameters are tuned for the Logistic Model using this method. For the Random Forest, the optimal mtry is found to be 4. This means four predictors will be used in each bagged tree in our final model that we will test on the out-of-sample test set.  
 
 ### Tuning optimal cutoff values
-The students now know the concept of parameter tuning, but they should have the opportunity to see what is going on under the hood. That's why choose one more hypterparamter to tune on each model--the cutoff value. At what point should we round our probability predictions up to 1? The default is 0.5, but we can make that value whatever we want.  
+The students now know the concept of hyperparameter tuning, but they should have the opportunity to see what is going on under the hood. We therefore choose one more hypterparamter to tune on each model--the cutoff value. At what point should we round our probability predictions up to 1? The default is 0.5, but we can make that value whatever we want.  
 
-To avoid overfitting, we want to tune on an out-of-sample dataset, but we don't want to do this on our test set because that is like cheating. Therefore, we can resplit our test data into a tuning and testing set:
+To avoid overfitting, we want to tune on an out-of-sample dataset, but we don't want to do this on our test set because that is like cheating. Therefore, we can resplit our test data into a tuning and testing set:  
 
 ``` R
 # split the test set into a tune and test set
