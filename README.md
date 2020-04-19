@@ -82,7 +82,7 @@ random_forest <- train(many_shooting_events ~ ., data = training,
 summary(random_forest)
 ```
 
-Cross-validation is when the dataset is divided into equal and random subsets, the model is trained all subsets of the data minus 1, and then this is repeated across all subsets of the data. The final accuracy metrics are an average of all trials. Different hyperparameters can be tuned in each round of training, so this process can take a long time. The model is chosen that includes the best hyperparemeters, which was the one that performed the best on average.  
+Cross-validation is when the dataset is divided into equal and random subsets, the model is trained on all subsets of the data minus 1, and then this is repeated across each subset. The final accuracy metrics are an average of all trials. Different hyperparameters are tuned in each round of training, so this process can take a long time. The model is chosen that includes the best hyperparemeters, which was the one that performed the best on average across all trials.  
 
 No parameters are tuned for the Logistic Model using this method. For the Random Forest, the optimal mtry is found to be 4. This means four predictors will be used in each bagged tree in our final model that we will test on the out-of-sample test set.  
 
