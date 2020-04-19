@@ -3,12 +3,12 @@
 This repository includes the lesson on Machine Learning I give annually to the Master's of Applied Economics students at Florida State.
 
 ## Overview
-I am asked annually to teach a single introduction to Machine Learning lecture to the new cohort at Florida State. The students have backgrounds typically in STATA, SAS, R, Logistic Modeling, and economic interpretations of societal trends. Building upon that knowledge, this lecture hopes to offer how big data and predictive modeling can be used to expand their skillsets.  
+I am asked annually to teach a single introduction to Machine Learning lecture to the new cohort at Florida State. The students have backgrounds typically in STATA, SAS, R, Logistic Modeling, and economic interpretations of societal trends. Building upon that knowledge, this lecture hopes to offer how big data and predictive modeling can be used to expand the students' skillsets.  
 
 This is completed in R, with an identical application of the techniques and models in Microsoft Azure Machine Learning Studio (not attached here). If the files in this directory are copied locally, the ML Script.R program should run and give identical results to what is described in this document.  
 
 ## Data
-The data (master_panel_set_clean.csv) is a monthly aggregated state-by-state flat view of many indicators, including how many shooting events occurred in that month (from a dataset obtained on Kaggle--not a complete measure of all shooting events, but close enough to be modeled), how many gun licenses were issued for which types of firearms (according to the NICS database maintained by the FBI), how many permits for hunting and recreational shooting were outstanding in the state in a given month, a coincidental economic indicator available on the [St. Louis Federal Reserve website (FRED)](https://fred.stlouisfed.org/), the unemployment rate (also from FRED), and more. The data spans January of 2014 through December of 2017. If you want a complete data dictionary or to know how these measures were obtained and compiled, please contact me and I'd be happy to provide that information.  
+The data (master_panel_set_clean.csv) is a monthly aggregated state-by-state flat view of many indicators, including how many shooting events occurred in that month (from a dataset obtained from Kaggle--not a complete measure of all shooting events, but close enough to be modeled), how many gun licenses were issued for which types of firearms (according to the NICS database maintained by the FBI), how many permits for hunting and recreational shooting were outstanding in the state in a given month, a coincidental economic indicator available on the [St. Louis Federal Reserve website (FRED)](https://fred.stlouisfed.org/), the monthly average unemployment rate (also from FRED), and more. The data spans January of 2014 through December of 2017. If you want a complete data dictionary or to know how these measures were obtained and compiled, please contact me and I'd be happy to provide that information.  
 
 For the sake of the class, I decided to keep only a few variables from the master dataset. These include:
 - many_shooting_events: 1 if the state had many shooting events in the given year/month (I chose an arbitrary cutoff around the 25 percentile of shootings for all states in all months), 0 otherwise. **Dependent Variable**
@@ -27,9 +27,9 @@ For the sake of the class, I decided to keep only a few variables from the maste
 |0|0.7855|3.7|0.001219661|11|30.58637|0|
 |0|0.4656|4.5|0.00343214|27|12.04275|0|
 
-This leaves 2,400 observations and 6 predictor variables to predict if many_shooting_events is 1 or 0 for a given obs.  
+This leaves 2,400 observations and 6 predictor variables to predict if many_shooting_events is 1 or 0 on a given row of data.  
 
-One of the students in the class, the first time I taught this, made the comment that there was probably some auto-correlation between the statewide indicators applied to the dataset and the number of shootings in that state at a given time. Yes, this is probably true. This lesson isn't supposed to be the final word on how the indicators in this dataset affect gun violence. It is meant to be an introduction to Machine Learning techniques. That being said, the predictive power of the models created in the attached R script are siginificantly better than guessing, so there are some insights to be gleaned.  
+One of the students in the class, the first time I taught this, made the comment that there was probably some auto-correlation between the statewide indicators applied to the dataset and the number of shootings in that state at a given time. Yes, this is probably true. This lesson isn't supposed to be the final word on how the indicators in this dataset affect gun violence. It is meant to be an introduction to Machine Learning techniques. That being said, the phenomenon is possible to model accurately, so there are some insights to be gleaned.  
 
 ## Process
 
