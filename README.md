@@ -16,7 +16,7 @@ For the sake of the class, I decided to keep only a few variables from the maste
 - UR: the [unemployment rate](https://fred.stlouisfed.org/series/CAUR) in the given state in the given month
 - CI: the [coincidental economic indicator](https://fred.stlouisfed.org/series/CAPHCI) in the given state in the given month--transformed to be the distance, in standard deviations, away from the mean of a logged first difference per state, to ensure stationarity and reduce auto-correlation in the panel dataset. This made the values very small
 - restr_laws: the number of restrictive gun laws in the given state in the given month
-- hg_per_cap: the number of handgun permits issued in the state per capita
+- hg_per_cap: the number of handgun permits issued in the state per capita in the given month, multiplied by 10,000
 - summer_months: whether the given month is June, July, or August  
 
 |many_shooting_events|state_race_white|UR|CI|restr_laws|hg_per_cap|summer_months|
