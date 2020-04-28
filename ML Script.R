@@ -154,7 +154,6 @@ rf_accuracy$model <- 'Random Forest'
 
 # Combine the two
 mapped_accuracy <- rbind(logistic_accuracy, rf_accuracy)
-  
 
 # Visualize the relationship between sensitivity, specficity, and accuracy
 mapped_graph <- mapped_accuracy %>%
